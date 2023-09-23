@@ -30,13 +30,15 @@ function hasMutationHorizontal(dna) {
     }
   }
 
-let adn = [
-  "ATGATA",
-  "CAGTGC",
-  "TTATGT",
-  "AGAGTG",
-  "GCGTCA",
-  "TCACTG"
-];
+  export default hasMutationHorizontal
 
-console.log(hasMutation(adn))
+// let adn = [
+//   "ATGATA",
+//   "CAGTGC",
+//   "TTATGT",
+//   "AGAGTG",
+//   "GCGTCA",
+//   "TCACTG"
+// ];
+
+// console.log(hasMutation(adn))
