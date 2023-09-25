@@ -1,5 +1,5 @@
 function hasMutation(dna) {
-  let sumaSecuencias = 0; 
+  let sumaSecuencias = 0;
 
   // SECUENCIAS EN HORIZONTAL
   for (let i = 0; i < dna.length; i++) {
@@ -50,7 +50,7 @@ function hasMutation(dna) {
   for (let i = 0; i < dna.length; i++) {
     for (let j = 0; j < dna[i].length; j++) {
       let diagonalSecuencia = "";
-      
+
       // Diagonal hacia la derecha y abajo
       for (let k = 0; i + k < dna.length && j + k < dna[i].length; k++) {
         diagonalSecuencia += dna[i + k][j + k];
@@ -69,43 +69,27 @@ function hasMutation(dna) {
       sumaSecuencias += contarSecuencias(letrasCount);
     }
   }
-  
-  console.log(sumaSecuencias);
+  function contarLetras(secuencia) {
+    let letrasCount = {};
+    for (let letra of secuencia) {
+      if (letrasCount.hasOwnProperty(letra)) {
+        letrasCount[letra]++;
+      } else {
+        letrasCount[letra] = 1;
+      }
+    }
+    return letrasCount;
+  }
+  function contarSecuencias(letrasCount) {
+    let secuencias = 0;
+    for (let letra in letrasCount) {
+      if (letrasCount[letra] >= 4) {
+        secuencias++;
+      }
+    }
+    return secuencias;
+  }
   return sumaSecuencias >= 2;
 }
 
-function contarLetras(secuencia) {
-  let letrasCount = {};
-  for (let letra of secuencia) {
-    if (letrasCount.hasOwnProperty(letra)) {
-      letrasCount[letra]++;
-    } else {
-      letrasCount[letra] = 1;
-    }
-  }
-  return letrasCount;
-}
-
-function contarSecuencias(letrasCount) {
-  let secuencias = 0;
-  for (let letra in letrasCount) {
-    if (letrasCount[letra] >= 4) {
-      secuencias++;
-    }
-  }
-  return secuencias;
-}
-
-let adn = [
-  "GTGATA",
-  "CATGAG",
-  "ATGTGA",
-  "TGAAGT",
-  "TCATCC",
-  "TCACTG"
-];
-
-console.log(hasMutation(adn));
-
-
-
+export default hasMutation
