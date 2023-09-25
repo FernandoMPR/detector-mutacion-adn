@@ -2,9 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import AdnModel from "./Model/adnModel.js";
 import pool from "./server.js";
-import hasMutationHorizontal from "./controllers/DetectorMutacionesHorizontal.js";
-
-
+import hasMutation from "./controllers/DetectorMutacionesHorizontal.js";
 
 const app = express();
 const port = 3000;
@@ -46,13 +44,13 @@ app.get('/mutation', (req, res) => {
 
 
 
-app.post('/mutation', (req, res) => {
+  app.post('/mutation', (req, res) => {
     const nuevoAdn = { 
          id: adnModel.getAdns().length + 1,
          adn: req.body.adn || datosGet.adn || '',
      }
  
-    const detectorMutacion = hasMutationHorizontal(nuevoAdn.adn) 
+    const detectorMutacion = hasMutation(nuevoAdn.adn) 
  
     if (detectorMutacion === true){
      res.status(200).json({ message: 'Mutación detectada'})
@@ -61,7 +59,6 @@ app.post('/mutation', (req, res) => {
     }
     adnModel.addAdn(nuevoAdn);
  });
-
 
 
 
