@@ -1,4 +1,5 @@
-import hasMutationHorizontal from "../controllers/DetectorMutacionesHorizontal.js";
+import hasMutation from "../controllers/DetectorMutacionesHorizontal.js";
+
 
 class AdnModel {
     constructor() {
@@ -14,12 +15,12 @@ class AdnModel {
     }
 
     countMutations() {
-      const mutatedAdns = this.adns.filter((adn) => hasMutationHorizontal(adn.adn));
+      const mutatedAdns = this.adns.filter((adn) => hasMutation(adn.adn));
       return mutatedAdns.length;
     }
 
     countNoMutations() {
-      const nonMutatedAdns = this.adns.filter((adn) => !hasMutationHorizontal(adn.adn));
+      const nonMutatedAdns = this.adns.filter((adn) => !hasMutation(adn.adn));
       return nonMutatedAdns.length;
     }
     
