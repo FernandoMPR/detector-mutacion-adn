@@ -14,12 +14,13 @@ app.use(express.urlencoded({ extended: true }));
 
 let datosGet = {};
 
+//FORMULARIO PARA PRUEBAS
 app.get("/mutation", (req, res) => {
   datosGet = req.query;
-  res.sendFile("index.html", { root: './views' });
+  res.sendFile("index.html", { root: "./views" });
 });
 
-
+//DETECTOR DE MUTACIONES DE ENTRADA AL SERVIDOR
 app.post("/mutation", (req, res) => {
   const nuevoAdn = {
     id: adnModel.getAdns().length + 1,
@@ -36,8 +37,7 @@ app.post("/mutation", (req, res) => {
   adnModel.addAdn(nuevoAdn);
 });
 
-
-
+//LISTA DE ADNS INGRESADOS
 app.get("/adns", async (req, res) => {
   try {
     const adns = await adnModel.getAdns();
@@ -48,8 +48,7 @@ app.get("/adns", async (req, res) => {
   }
 });
 
-
-
+//CONTEO DE ADN MUTABLES Y NO MUTABLES
 app.get("/stats", async (req, res) => {
   try {
     const statsTrue = await adnModel.countMutations();
@@ -64,8 +63,7 @@ app.get("/stats", async (req, res) => {
   }
 });
 
-
-
+//PUERTO DE DESPLIEGUE
 app.listen(port, () => {
   console.log("Servidor en Puerto", port);
 });

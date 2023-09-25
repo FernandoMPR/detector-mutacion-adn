@@ -1,11 +1,12 @@
-import pg from "pg"
-import { config } from "dotenv"
+import pg from "pg";
+import { config } from "dotenv";
 
-config()
+config();
 
+//CONFIGURACION DE BASE DE DATOS DE RENDER, POSTGRESSQL
 const pool = new pg.Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: true
-})
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
 
-export default pool
+export default pool;
