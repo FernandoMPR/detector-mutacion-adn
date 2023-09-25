@@ -1,5 +1,4 @@
-import hasMutation from "../controllers/DetectorMutacionesHorizontal";
-
+import hasMutation from "../controllers/DetectorMutacionesHorizontal.js";
 
 class AdnModel {
     constructor() {
